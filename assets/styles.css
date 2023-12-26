@@ -1,0 +1,180 @@
+header{
+    width: 100vw;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 20000;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+header>img{
+    width: 150px;
+    height: 60px;
+    display: inline;
+}
+header>nav{
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top:0;
+}
+header>nav>a{
+    height: fit-content;
+    width: fit-content;
+    margin-right: 30px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    top: 15px;
+    transition: font-size;
+    transition-duration: 1s;
+}
+header>button{
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+    top: 2px;
+    left: 44.5vw;
+}
+header>nav>a:first-child:hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(2):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(3):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+main{
+    width: 100vw;
+    height: 200vh;
+    background-color: azure;
+    position: absolute;
+    top: 60px;
+}
+
+section{
+    position: relative;
+    z-index: 10000;
+}
+.divider{
+    width: 200px;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: darkslategray;
+    position: absolute;
+    left: -150px;
+    transition: left;
+    transition-duration: 1s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+.divider>span{
+    position: absolute;
+    color: floralwhite;
+    font-family: 'Comfortaa', sans-serif;
+    top: 10px;
+    left: 25px;
+    font-size: 20px;
+}
+.divider>img{
+    color: white;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    margin: 5px;
+    height: 30px;
+    width: 30px;
+}
+.facebook{
+    top: 90px;
+}
+.linked-In{
+    top: 180px;
+}
+.whatsapp{
+    top: 270px;
+}
+.divider:hover{
+    left: 0;
+}
+.horiz{
+    width: 90vw;
+    position: relative;
+    top: 520px;
+    left: 5vw;
+    border: 1px solid darkblue;
+}
+
+.title-box{
+    position: relative;
+    top: 530px;
+    left: 190px;
+    width: 75vw;
+    height: 107px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: blue;
+}
+.form-box{
+    position: relative;
+    top: 533px;
+    left: 190px;
+    width: 75vw;
+    height: 120px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: #00b5ec;
+}
+.title-box>h2{
+    font-family: 'Josefin Sans', sans-serif;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.dropdown{
+    position: relative;
+    left: 7px;
+    top: 20px;
+    display: block;
+    width: 250px;
+    height: 59px;
+    border-radius: 7px;
+    font-family: 'Exo 2', sans-serif;
+}
+.dropdown:focus{
+    border: 5px solid #03a4f0;
+}
+.form-floating{
+    position: relative;
+    left: 267px;
+    top: -38px;
+    width: 700px;
+    padding: 0;
+    font-family: 'Exo 2', sans-serif;
+}
+.search{
+    position: relative;
+    left: 990px;
+    top: -95px;
+    display: block;
+    width: 150px;
+    height: 59px;
+    border-radius: 7px;
+}

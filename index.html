@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visit Your Doctor</title>
+    <link rel="icon" type="image/x-icon" href="./assets/">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="description" content="Health channelling web application">
+    <meta name="keywords" content="doctor channelling,e channelling">
+    <meta name="author" content="Nipun Dhananjaya">
+
+    <link rel="stylesheet" href="./assets/normalize.css">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Lobster&family=Rubik:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script&family=Dosis&family=Lobster&family=Pacifico&family=Rubik:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <img src="/assets/images/logo-removebg-preview.png" title="logo" alt="logo" width="100">
+    <nav>
+        <a href="#chat">Chat Consultations</a>
+        <a href="#about-me">Top Specialities</a>
+        <a href="#myAppointment">My Appointment</a>
+    </nav>
+    <button type="button" class="btn btn-primary">Sign In</button>
+</header>
+<main>
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/assets/images/slider_1.jpg" class="d-block w-100" alt="slid 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slider_2 (1).jpg" class="d-block w-100" alt="slid 2">
+            </div>
+            <div class="carousel-item">
+                <img src="/assets/images/slider_3.webp" class="d-block w-100" alt="slid 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</main>
+<section>
+    <div class="divider facebook border border-warning">
+        <span>Facebook</span>
+        <img src="./assets/images/facebook.ico">
+    </div>
+    <div class="divider linked-In border border-warning">
+        <span>Linked In</span>
+        <img src="./assets/images/linkedin.ico">
+    </div>
+    <div class="divider whatsapp border border-warning">
+        <span>WhatsApp</span>
+        <img src="./assets/images/whatsapp.ico">
+    </div>
+</section>
+<div class="horiz"></div>
+
+<div class="title-box" >
+    <h2>Doctor Channelling</h2>
+</div>
+<div class="form-box" >
+    <select class="dropdown" id="dropdown">
+        <option value="doctors" id="Doctors">Doctors</option>
+        <option value="specialization" id="Specialization">Specialization</option>
+        <option value="hospital" id="Hospital">Hospital</option>
+    </select>
+    <div class="form-floating">
+        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+        <label for="floatingTextarea" id="labelText">Search by Doctors</label>
+    </div>
+
+    <button type="button" class="btn btn-outline-success search">Search</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
+<script>
+    var dropdown = document.getElementById('dropdown');
+    var labelToUpdate = document.getElementById('labelText');
+
+    dropdown.addEventListener('change', function() {
+        labelToUpdate.textContent ="Search by "+ dropdown.options[dropdown.selectedIndex].text;
+    });
+</script>
+</body>
+</html>
