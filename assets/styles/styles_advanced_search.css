@@ -1,0 +1,126 @@
+body{
+    overflow-x: hidden;
+}
+pre {
+    white-space: pre;
+}
+header{
+    width: 100vw;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 20000;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+header>a>img{
+    width: 150px;
+    height: 60px;
+    display: inline;
+}
+header>nav{
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top:0;
+}
+header>nav>a{
+    height: fit-content;
+    width: fit-content;
+    margin-right: 30px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    top: 15px;
+    transition: font-size;
+    transition-duration: 1s;
+}
+header>a>button{
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+    top: 2px;
+    left: 49vw;
+}
+header>nav>a:first-child:hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(2):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(3):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+
+.title-box{
+    position: relative;
+    top: 100px;
+    left: 190px;
+    width: 75vw;
+    height: 107px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: blue;
+}
+.form-box{
+    position: relative;
+    top: 103px;
+    left: 190px;
+    width: 75vw;
+    height: 370px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: #00b5ec;
+    padding: 15px;
+}
+.item-label{
+    color: white;
+}
+.title-box>h2{
+    font-family: 'Josefin Sans', sans-serif;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+.row{
+    margin: 35px;
+}
+
+footer{
+    width: 100vw;
+    height: 250px;
+    position: relative;
+    top: 250px;
+    background: rgb(44,97,219);
+    background: linear-gradient(90deg, rgba(44,97,219,1) 0%, rgba(44,112,210,1) 54%, rgba(94,229,217,1) 100%);
+}
+footer>img{
+    width: 250px;
+    height: 100px;
+    margin: 20px;
+    background-color: azure;
+    display: inline-block;
+}
+footer>pre{
+    position: relative;
+    left: 270px;
+    top: -140px;
+    width: 400px;
+    height: 230px;
+    margin: 20px;
+    color: azure;
+}

@@ -1,3 +1,6 @@
+body{
+    overflow-x: hidden;
+}
 pre {
     white-space: pre;
 }
@@ -10,7 +13,7 @@ header{
     z-index: 20000;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
-header>img{
+header>a>img{
     width: 150px;
     height: 60px;
     display: inline;
@@ -182,13 +185,6 @@ section{
     border-radius: 7px;
     font-family: 'Exo 2', sans-serif;
 }
-.accordion{
-    position: relative;
-    top: 580px;
-    left: 190px;
-    width: 75vw;
-    height: 120px;
-}
 .btn-outline-secondary{
     position: relative;
     top: 550px;
@@ -225,7 +221,8 @@ section{
     top: 580px;
     left: 21vw;
 }
-.cards1>.card{
+.cards1>.card-set{
+    position: relative;
     height: 300px;
     width: 260px;
     margin: 20px;
@@ -236,7 +233,7 @@ section{
     color: #2c60dc;
     transition: 0.5s ease-in-out;
 }
-.card>.for-img{
+.card-set>.for-img{
     position: absolute;
     left: 0;
     right: 0;
@@ -246,18 +243,18 @@ section{
     width: 200px;
     display: inline-block;
 }
-.card>.for-img>img{
+.card-set>.for-img>img{
     height: 110px;
     width: 200px;
     display: inline-block;
 }
-.card>.for-txt{
+.card-set>.for-txt{
     position: relative;
     top: 110px;
     text-align: center;
     font-size: 14px;
 }
-.card>h5{
+.card-set>h5{
     position: relative;
     top: 105px;
     text-align: center;
@@ -291,7 +288,8 @@ section{
     top: 620px;
     left: 9.5vw;
 }
-.cards2>.card{
+.cards2>.card-set{
+    position: relative;
     height: 300px;
     width: 260px;
     margin: 20px;
@@ -302,7 +300,7 @@ section{
     color: #2c60dc;
     transition: 0.5s ease-in-out;
 }
-.card:hover{
+.card-set:hover{
     transform: translateZ(-20px) scale(1.1);
     color: white;
     background-color: #2c60dc;
