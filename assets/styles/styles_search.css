@@ -1,0 +1,155 @@
+body{
+    overflow-x: hidden;
+}
+pre {
+    white-space: pre;
+}
+header{
+    width: 100vw;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    z-index: 20000;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+header>a>img{
+    width: 150px;
+    height: 60px;
+    display: inline;
+}
+header>nav{
+    height: fit-content;
+    width: fit-content;
+    position: absolute;
+    right: 10px;
+    top:0;
+}
+header>nav>a{
+    height: fit-content;
+    width: fit-content;
+    margin-right: 30px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: relative;
+    top: 15px;
+    transition: font-size;
+    transition-duration: 1s;
+}
+header>a>button{
+    margin-right: 30px;
+    text-decoration: none;
+    position: relative;
+    top: 2px;
+    left: 49vw;
+}
+header>nav>a:first-child:hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(2):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+header>nav>a:nth-child(3):hover{
+    color: limegreen;
+    font-size: 30px;
+}
+
+.cards2{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Responsive grid columns */
+    width: 80vw;
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+    top: 100px;
+    left: 9.5vw;
+}
+.cards2>.card-set{
+    position: relative;
+    height: 300px;
+    width: 260px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color: whitesmoke;
+    padding: 10px;
+    color: #2c60dc;
+    transition: 0.5s ease-in-out;
+}
+.card-set:hover{
+    background-color: #eeeeee;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.card-set>.for-img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 3px;
+    height: 150px;
+    width: 200px;
+    display: inline-block;
+}
+.card-set>.for-img>img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 130px;
+    width: 130px;
+    display: inline-block;
+    border-radius: 100%;
+    border: 2px solid darkblue;
+}
+.card-set>.for-txt{
+    position: relative;
+    top: 130px;
+    text-align: center;
+    font-size: 14px;
+}
+.card-set>h5{
+    position: relative;
+    top: 128px;
+    text-align: center;
+}
+.book{
+    width: 100px;
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 10px;
+    margin: auto;
+}
+footer{
+    width: 100vw;
+    height: 250px;
+    position: relative;
+    top: 660px;
+    background: rgb(44,97,219);
+    background: linear-gradient(90deg, rgba(44,97,219,1) 0%, rgba(44,112,210,1) 54%, rgba(94,229,217,1) 100%);
+}
+footer>img{
+    width: 250px;
+    height: 100px;
+    margin: 20px;
+    background-color: azure;
+    display: inline-block;
+}
+footer>pre{
+    position: relative;
+    left: 270px;
+    top: -140px;
+    width: 400px;
+    height: 230px;
+    margin: 20px;
+    color: azure;
+}
