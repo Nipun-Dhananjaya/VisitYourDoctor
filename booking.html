@@ -41,23 +41,57 @@
 </header>
 
 <div class="title-box" >
-    <h2>Doctor Channelling</h2>
+    <h2>Place Appointment</h2>
+</div>
+<div class="form-box2" >
+    <div class="for-img">
+        <img src="/assets/images/slider_6.jpg" alt="Cardiologist">
+    </div>
+    <h5>GALLE CO-OPERATIVE HOSPITAL LTD</h5>
+    <div class="for-txt">
+        <pre>
+            Galle
+            Session Date
+            Session Start Time
+            05:00 PM
+            Appointment No 1
+            Your estimated
+            appointment
+            time is 05:00 PM.
+        </pre>
+    </div>
 </div>
 <div class="form-box" >
     <div class="row g-3">
-        <div class="col-sm">
-            <label class="item-label" for="inlineFormSelectPref">Hospital Type</label>
+        <div class="col-sm-2">
+            <label class="item-label" for="inlineFormSelectPref">Title</label>
             <select class="form-select" id="inlineFormSelectPref">
-                <option value="1" selected>Private Hospital</option>
-                <option value="2">Ayurvedic Hospital</option>
-                <option value="3">Public Hospital</option>
+                <option value="1" selected>Mr.</option>
+                <option value="2">Mrs.</option>
+                <option value="3">Ms.</option>
+                <option value="3">Ven.</option>
             </select>
         </div>
-        <div class="col-sm">
-            <label class="item-label" for="location">Location</label>
-            <input id="location" type="text" class="form-control" placeholder="Any" aria-label="Location">
+        <div class="col-sm-6">
+            <label class="item-label" for="pname">Patient Name</label>
+            <input id="pname" type="text" class="form-control" placeholder="P.M.K.Perera" aria-label="Patient Name">
         </div>
-        <div class="col-sm-7">
+        <div class="col-sm-4">
+            <label class="item-label" for="tele">Telephone Number</label>
+            <input id="tele" type="text" class="form-control" placeholder="07X-XXXXXXX" aria-label="Telephone Number">
+        </div>
+    </div>
+
+    <div class="row g-3">
+        <div class="col-sm-3">
+            <label class="item-label" for="specialisation">Specialisation</label>
+            <input id="specialisation" type="text" class="form-control" placeholder="Select Specialisation" aria-label="specialisation">
+        </div>
+        <div class="col-sm-5">
+            <label class="item-label" for="dname">Doctor Name</label>
+            <input id="dname" type="text" class="form-control" placeholder="K.G.P. Fernando" aria-label="Name">
+        </div>
+        <div class="col-sm-4">
             <label class="item-label" for="hospital">Hospital</label>
             <input id="hospital" type="text" class="form-control" placeholder="Select Hospital" aria-label="Hospital">
         </div>
@@ -65,18 +99,9 @@
 
     <div class="row g-3">
         <div class="col-sm-4">
-            <label class="item-label" for="specialisation">Specialisation</label>
-            <input id="specialisation" type="text" class="form-control" placeholder="Select Specialisation" aria-label="specialisation">
+            <label class="item-label" for="date">Date</label>
+            <input id="date" type="date" class="form-control" placeholder="Date" aria-label="Date">
         </div>
-        <div class="col-sm">
-            <label class="item-label" for="gender">Gender</label>
-            <select class="form-select" id="gender">
-                <option selected>Any</option>
-                <option value="1">Male</option>
-                <option value="2">Female</option>
-            </select>
-        </div>
-
         <div class="col-sm">
             <label class="item-label" for="time">Session Time</label>
             <select class="form-select" id="time">
@@ -85,24 +110,13 @@
                 <option value="2">Evening Session</option>
             </select>
         </div>
-        <div class="col-sm-2">
-            <label class="item-label" for="date">Date</label>
-            <input id="date" type="date" class="form-control" placeholder="Date" aria-label="Date">
-        </div>
-    </div>
-
-    <div class="row g-3">
         <div class="col-sm-4">
             <label class="item-label" for="price">Price Range</label>
-            <input id="price" type="text" class="form-control" placeholder="Any" aria-label="Price">
-        </div>
-        <div class="col-sm-8">
-            <label class="item-label" for="name">Doctor Name</label>
-            <input id="name" type="text" class="form-control" placeholder="Any" aria-label="Name">
+            <input id="price" type="text" class="form-control" placeholder="Any" aria-label="Price" disabled>
         </div>
     </div>
 
-    <button type="button" class="btn btn-outline-secondary col-12" onclick="window.location.href = 'search_result.html';">Advanced Search</button>
+    <button type="button" class="btn btn-primary col-12">Book Now</button>
 </div>
 
 <footer>
@@ -119,5 +133,15 @@
                  Sri Lanka
     </pre>
 </footer>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+</script>
+<script src="/assets/js/all.js" ></script>
 </body>
 </html>

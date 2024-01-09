@@ -74,11 +74,21 @@ header>nav>a:nth-child(3):hover{
 .form-box{
     position: relative;
     top: 103px;
-    left: 190px;
-    width: 75vw;
+    left: 421px;
+    width: 60vw;
     height: 370px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
     background-color: #00b5ec;
+    padding: 15px;
+}
+.form-box2{
+    position: absolute;
+    top: 210px;
+    left: 188px;
+    width: 15vw;
+    height: 370px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    background-color: #adb5bd;
     padding: 15px;
 }
 .item-label{
@@ -99,7 +109,38 @@ header>nav>a:nth-child(3):hover{
 .row{
     margin: 35px;
 }
-
+.for-img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 3px;
+    height: 150px;
+    width: 200px;
+    display: inline-block;
+}
+.for-img>img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 130px;
+    width: 130px;
+    display: inline-block;
+    border-radius: 100%;
+    border: 2px solid darkblue;
+}
+.for-txt{
+    position: relative;
+    top: 130px;
+    text-align: center;
+    font-size: 14px;
+}
+h5{
+    position: relative;
+    top: 128px;
+    text-align: center;
+}
 footer{
     width: 100vw;
     height: 250px;
