@@ -84,7 +84,7 @@
 </div>
 <div class="form-box" >
     <select class="dropdown" id="dropdown">
-        <option value="doctors" id="Doctors">Doctors</option>
+        <option value="doctors" id="Doctors" selected>Doctors</option>
         <option value="specialization" id="Specialization">Specialization</option>
         <option value="hospital" id="Hospital">Hospital</option>
     </select>
@@ -250,15 +250,7 @@
                  Sri Lanka
     </pre>
 </footer>
-
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-</script>
+<script type="module" src="/assets/js/index.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>
 <script>
@@ -269,6 +261,5 @@
         labelToUpdate.textContent ="Search by "+ dropdown.options[dropdown.selectedIndex].text;
     });
 </script>
-<script src="/assets/js/all.js" ></script>
 </body>
 </html>
