@@ -9,8 +9,8 @@
     <meta name="keywords" content="doctor channelling,e channelling">
     <meta name="author" content="Nipun Dhananjaya">
 
-    <link rel="stylesheet" href="assets/styles/normalize.css">
-    <link rel="stylesheet" href="assets/styles/styles_index.css">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/styles_index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Lobster&family=Rubik:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
@@ -33,11 +33,12 @@
 <header>
     <a href="index.html"><img src="/assets/images/logo.png" title="logo" alt="logo" width="100"></a>
     <nav>
-        <a href="#quick">Quick Access</a>
+        <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="#top-spec">Top Specialities</a>
         <a href="./my_appointment.html" target="_self">My Appointment</a>
     </nav>
-    <a href="./sign_in.html" target="_blank"><button type="button" class="btn btn-primary">Sign In</button></a>
+    <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
+    <h4>Guest</h4>
 </header>
 <main>
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -91,13 +92,14 @@
     <div class="form-floating">
         <textarea class="form-control" placeholder="Search by Doctors" id="floatingTextarea"></textarea>
         <label for="floatingTextarea" id="labelText">Search by Doctors</label>
+        <div id="suggestions"></div>
     </div>
 
 
-    <a href="./search_result.html" target="_blank"><button type="button" class="btn btn-outline-success search" >Search</button></a>
+    <button type="button" class="btn btn-outline-success search" id="search-btn">Search</button>
 </div>
 <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = 'advanced_search.html';">Advanced Search</button>
-<div class="horiz secondhoriz"></div>
+<!--<div class="horiz secondhoriz"></div>
 <div id="quick" class="quick"><h2>Quick Access</h2></div>
 <div class="horiz thirdhoriz"></div>
 <section class="cards1">
@@ -136,12 +138,12 @@
             </p>
         </div>
     </div>
-</section>
+</section>-->
 <div class="horiz fourthhoriz"></div>
 <div id="top-spec" class="top-spec"><h2>Top Specialities</h2></div>
 <div class="horiz fifthhoriz"></div>
 <section class="cards2">
-    <div class="card-set card1">
+    <div class="card-set card1" id="card1">
         <div class="for-img">
             <img src="/assets/images/cardiologist.svg" alt="Cardiologist">
         </div>
@@ -152,7 +154,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card2">
+    <div class="card-set card2" id="card2">
         <div class="for-img">
             <img src="/assets/images/physician.svg" alt="Physician">
         </div>
@@ -164,7 +166,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card3">
+    <div class="card-set card3" id="card3">
         <div class="for-img">
             <img src="/assets/images/gynecologist.svg" alt="gynecologist">
         </div>
@@ -176,7 +178,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card4">
+    <div class="card-set card4" id="card4">
         <div class="for-img">
             <img src="/assets/images/pediatrician.svg" alt="pediatrician">
         </div>
@@ -187,7 +189,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card5">
+    <div class="card-set card5" id="card5">
         <div class="for-img">
             <img src="/assets/images/eye_surgeon.svg" alt="eye_surgeon">
         </div>
@@ -199,7 +201,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card6">
+    <div class="card-set card6" id="card6">
         <div class="for-img">
             <img src="/assets/images/cardiothoracic_surgeon.svg" alt="cardiothoracic_surgeon">
         </div>
@@ -211,7 +213,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card7">
+    <div class="card-set card7" id="card7">
         <div class="for-img">
             <img src="/assets/images/endocrinologist_and_diabetologist.svg" alt="endocrinologist_and_diabetologist">
         </div>
@@ -223,7 +225,7 @@
             </p>
         </div>
     </div>
-    <div class="card-set card8">
+    <div class="card-set card8" id="card8">
         <div class="for-img">
             <img src="/assets/images/genito_urinary_surgeon.svg" alt="genito_urinary_surgeon">
         </div>
@@ -250,9 +252,12 @@
                  Sri Lanka
     </pre>
 </footer>
-<script type="module" src="/assets/js/index.js" ></script>
+<script src="lib/jquary.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
 </script>
+<script type="module" src="/assets/js/search.js" ></script>
+<script type="module" src="/assets/js/top_specialities.js" ></script>
+<script type="module" src="/assets/js/index.js" ></script>
 <script>
     var dropdown = document.getElementById('dropdown');
     var labelToUpdate = document.getElementById('labelText');

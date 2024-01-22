@@ -9,8 +9,8 @@
     <meta name="keywords" content="doctor channelling,e channelling">
     <meta name="author" content="Nipun Dhananjaya">
 
-    <link rel="stylesheet" href="assets/styles/normalize.css">
-    <link rel="stylesheet" href="assets/styles/styles_search.css">
+    <link rel="stylesheet" href="./assets/styles/normalize.css">
+    <link rel="stylesheet" href="./assets/styles/styles_search.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dosis&family=Lobster&family=Rubik:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
@@ -31,28 +31,29 @@
 </head>
 <body>
 <header>
-    <a href="index.html"><img src="/assets/images/logo.png" title="logo" alt="logo" width="100"></a>
+    <a href="index.html"><img src="./assets/images/logo.png" title="logo" alt="logo" width="100"></a>
     <nav>
-        <a href="index.html#quick">Quick Access</a>
+        <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="index.html#top-spec">Top Specialities</a>
         <a href="./my_appointment.html" target="_self">My Appointment</a>
     </nav>
-    <a href="./sign_in.html" target="_blank"><button type="button" class="btn btn-primary">Sign In</button></a>
+    <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
+    <h4>Guest</h4>
 </header>
-<section class="cards2">
-    <div class="card-set card1">
+<section class="left">
+    <div class="left-card">
         <div class="for-img">
-            <img src="/assets/images/slider_6.jpg" alt="Cardiologist">
+            <img src="/assets/images/online-store.png" alt="online-store">
         </div>
-        <h5>Channel a Cardiologist</h5>
+        <h5>Online Store</h5>
         <div class="for-txt">
             <p>
-                A Cardiologist specializes in the structure, functions, and diseases of the heart and blood vessels.
+                Explore the wide selection of packages designed to meet your wellness and health needs at our online store.
             </p>
         </div>
-        <a href="./booking.html" target="_blank"><button type="button" class="btn btn-primary book">Book Now</button></a>
     </div>
 </section>
+<section class="right"></section>
 <footer>
     <img src="/assets/images/logo.png" alt="logo">
     <pre>
@@ -67,15 +68,8 @@
                  Sri Lanka
     </pre>
 </footer>
-
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-</script>
-<script src="/assets/js/index.js" ></script>
+<script src="/lib/jquary.min.js"></script>
+<script type="module" src="/assets/js/index.js" ></script>
+<script type="module" src="/assets/js/search.js" ></script>
 </body>
 </html>

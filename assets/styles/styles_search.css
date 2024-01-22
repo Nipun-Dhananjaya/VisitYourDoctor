@@ -42,12 +42,12 @@ header>nav>a{
     transition: font-size;
     transition-duration: 1s;
 }
-header>a>button{
+header>button{
     margin-right: 30px;
     text-decoration: none;
     position: relative;
     top: 2px;
-    left: 49vw;
+    left: 45vw;
 }
 header>nav>a:first-child:hover{
     color: limegreen;
@@ -61,79 +61,72 @@ header>nav>a:nth-child(3):hover{
     color: limegreen;
     font-size: 30px;
 }
-
-.cards2{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Responsive grid columns */
-    width: 80vw;
-    gap: 20px;
-    padding: 20px;
+header>h4{
+    display: inline-block;
+    margin-right: 30px;
     position: relative;
-    top: 100px;
-    left: 9.5vw;
+    left: 45vw;
+    top: 7px;
 }
-.cards2>.card-set{
+.left{
     position: relative;
-    height: 300px;
-    width: 260px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-    background-color: whitesmoke;
-    padding: 10px;
+    top:60px;
+    border: 2px solid red;
+    height: 500px;
+    width: 300px;
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
     color: #2c60dc;
-    transition: 0.5s ease-in-out;
 }
-.card-set:hover{
-    background-color: #eeeeee;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-}
-
-.card-set>.for-img{
+.left-card>.for-img{
     position: absolute;
     left: 0;
     right: 0;
     margin: auto;
-    top: 3px;
+    top: 7px;
     height: 150px;
     width: 200px;
     display: inline-block;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
-.card-set>.for-img>img{
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    height: 130px;
-    width: 130px;
-    display: inline-block;
-    border-radius: 100%;
-    border: 2px solid darkblue;
-}
-.card-set>.for-txt{
+.left-card>.for-img>img{
     position: relative;
-    top: 130px;
+    top: 10px;
+    height: 110px;
+    width: 200px;
+    display: inline-block;
+}
+.left-card>.for-txt{
+    position: relative;
+    top: 170px;
     text-align: center;
     font-size: 14px;
 }
-.card-set>h5{
+.left-card>h5{
     position: relative;
-    top: 128px;
+    top: 160px;
     text-align: center;
 }
-.book{
-    width: 100px;
+.right{
     position: absolute;
+    top:60px;
     right: 0;
-    left: 0;
-    bottom: 10px;
-    margin: auto;
+    border: 2px solid red;
+    height: 500px;
+    width: calc(100vw - 350px);
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 footer{
     width: 100vw;
     height: 250px;
     position: relative;
-    top: 660px;
+    top: 60px;
     background: rgb(44,97,219);
     background: linear-gradient(90deg, rgba(44,97,219,1) 0%, rgba(44,112,210,1) 54%, rgba(94,229,217,1) 100%);
 }
