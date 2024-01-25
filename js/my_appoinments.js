@@ -2,6 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,23 +22,22 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
-let sType='';
-let sName='';
-let id='';
+/*
+const allAppointments=[];
+//load all details
+async function loadAll() {
+    const doctorsRef = ref(database,'Doctors/');
+    onValue(doctorsRef,(snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const doctorData = childSnapshot.val();
+            allAppointments.push(doctorData);
+        });
 
-
-export function allSearchResults(searchType,searchName) {
-    if (typeof searchType !== 'undefined' || typeof searchType !== 'undefined' ||
-        typeof sType !== 'undefined'|| typeof sName !== 'undefined') {
-
-        console.log(searchType);
-        console.log(searchName);
-        sType=searchType.toString();
-        sName=searchName.toString();
-        console.log(sType);
-        console.log(sName);
-        window.location.href = './search_result.html';
-    } else {
-        console.error('Variable "type" is undefined');
-    }
+        console.log('All Appointment Data:', allAppointments);
+    })
+    $("#table-body").empty();
+    allAppointments.map((appointment, index) => {
+        $("#table-body").append(`<tr><td>${appointment.date}</td><td>${appointment.pName}</td><td>${appointment.dName}</td><td>${appointment.specialization}</td><td>${appointment.session}</td><td>${appointment.tele}</td></tr>`);
+    });
 }
+window.onload=loadAll;*/

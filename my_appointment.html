@@ -38,56 +38,40 @@
         <a href="./my_appointment.html" target="_self">My Appointment</a>
     </nav>
     <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4>Guest</h4>
+    <h4 id="signIn_name">Guest</h4>
 </header>
 
 <table class="table table-striped appointments">
     <thead>
     <tr>
-        <th scope="col">Date</th>
-        <th scope="col">Patient Name</th>
-        <th scope="col">Doctor Name</th>
-        <th scope="col">Specialization</th>
-        <th scope="col">Session</th>
-        <th scope="col">Telephone</th>
+        <th scope="col" id="date">Date</th>
+        <th scope="col" id="pName">Patient Name</th>
+        <th scope="col" id="dName">Doctor Name</th>
+        <th scope="col" id="spec">Specialization</th>
+        <th scope="col" id="sessionTime">Session</th>
+        <th scope="col" id="tele">Telephone</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-    </tr>
+    <tbody id="table-body">
     </tbody>
 </table>
 
 <footer>
     <img src="/assets/images/logo.png" alt="logo">
     <pre>
-        Tele: +94 71 0 255 255
+        Tele: +94 77 64 21 290
 
-        Email: info@echannelling.com
+        Email: info@visityourdoctor.com
 
-        Address: eChannelling PLC,
-                 No: 108,
+        Address: visit your doctor PLC,
+                 No: 147,
                  W A D Ramanayake Mawatha,
                  Colombo 2,
                  Sri Lanka
     </pre>
 
 </footer>
-
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-    import { getDatabase } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-</script>
-<script src="/assets/js/index.js" ></script>
+<script type="module" src="./js/sign_in.js" ></script>
+<script type="module" src="./js/my_appoinments.js" ></script>
 </body>
 </html>

@@ -109,6 +109,14 @@ header>h4{
     top: 160px;
     text-align: center;
 }
+/*.card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+    display: inline-block;
+}*/
 .right{
     position: absolute;
     top:60px;

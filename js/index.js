@@ -1,9 +1,10 @@
-import { allSpecificDoctors} from "./top_specialities.js";
 import {allSearchResults} from "./search.js";
+import {allSpecificDoctors} from "./top_specialities.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -27,11 +28,19 @@ const allDoctorData = [];
 const allHospitalData = [];
 const allSpecializationData = [];
 
+export var userLabel=document.getElementById('signIn_name');
+export var btnLbl=document.getElementById('signIn-btn');
+
 //dropdown selections values get from database===================================================
 var dropdown = document.getElementById('dropdown');
 loadDoctors()
 
-dropdown.addEventListener('change', function() {
+export function updateSignedInDetails(userEmail, status){
+    userLabel.textContent = userEmail;
+    btnLbl.textContent=status;
+}
+
+$("#dropdown").on('change', function() {
     if (dropdown.options[dropdown.selectedIndex].text==='Doctors'){
         loadDoctors();
     }else if(dropdown.options[dropdown.selectedIndex].text==='Hospital'){
@@ -42,6 +51,7 @@ dropdown.addEventListener('change', function() {
 });
 
 function loadDoctors(){
+
     const doctorsRef = ref(database,'Doctors/');
     onValue(doctorsRef,(snapshot) => {
         snapshot.forEach((childSnapshot) => {
@@ -50,7 +60,7 @@ function loadDoctors(){
         });
 
         console.log('All Doctor Data:', allDoctorData);
-    })
+    });
 }
 function loadHospitals(){
     const hospitalRef = ref(database,'Hospital/');
@@ -61,7 +71,7 @@ function loadHospitals(){
         });
 
         console.log('All Hospital Data:', allHospitalData);
-    })
+    });
 }
 function loadSpecs(){
     const specRef = ref(database,'Specialization/');
@@ -72,16 +82,16 @@ function loadSpecs(){
         });
 
         console.log('All Spec Data:', allSpecializationData);
-    })
+    });
 }
 //===================================================================================================
 
-//textfield suggessions updating=====================================================================
+//textfield sugessions updating=====================================================================
 var textField = document.getElementById('floatingTextarea');
 var suggestionsContainer = document.getElementById('suggestions');
 
 
-textField.addEventListener('input', function() {
+$("#floatingTextarea").on('input', function() {
     var inputText = textField.value.toLowerCase();
     if (dropdown.options[dropdown.selectedIndex].text==='Doctors'){
         var matchingSuggestions = allDoctorData.filter(function(doctor) {
@@ -101,7 +111,7 @@ textField.addEventListener('input', function() {
     updateSuggestions(matchingSuggestions);
 });
 
-suggestionsContainer.addEventListener('click', function(event) {
+$("#suggestions").on('click', function(event) {
     if (event.target.classList.contains('suggestion')) {
         textField.value = event.target.textContent;
         suggestionsContainer.style.display = 'none';
@@ -128,20 +138,21 @@ function updateSuggestions(suggestions) {
 //direct to search result js file===================================================================
 $("#search-btn").on('click', async () => {
     let foundMatch = false;
+    console.log('search');
     allDoctorData.map((doctor, index) => {
-        if (doctor.name.includes(textField.value)){
+        if (doctor.name===(textField.value)){
             foundMatch = true;
             allSearchResults('Doctors',doctor.name);
         }
     });
     allSpecializationData.map((spec, index) => {
-        if (spec.name.includes(textField.value)){
+        if (spec.name===(textField.value)){
             foundMatch = true;
             allSearchResults('Specialization',spec.name);
         }
     });
     allHospitalData.map((hosp, index) => {
-        if (hosp.name.includes(textField.value)){
+        if (hosp.name===(textField.value)){
             foundMatch = true;
             allSearchResults('Hospital',hosp.name);
         }
@@ -154,28 +165,36 @@ $("#search-btn").on('click', async () => {
 //====================================================================================================
 
 //direct to top specializations js file===============================================================
-$("#card1").on('click', async () => {
+$("#card1").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Cardiologist');
 });
-$("#card2").on('click', async () => {
+$("#card2").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Physician');
 });
-$("#card3").on('click', async () => {
+$("#card3").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Gynecologist');
 });
-$("#card4").on('click', async () => {
+$("#card4").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Pediatrician');
 });
-$("#card5").on('click', async () => {
+$("#card5").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Eye Surgeon');
 });
-$("#card6").on('click', async () => {
+$("#card6").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Cardio Thoracic Surgeon');
 });
-$("#card7").on('click', async () => {
+$("#card7").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Endocrinologist and Diabetologist');
 });
-$("#card8").on('click', async () => {
+$("#card8").on('click', () => {
+    console.log('card');
     allSpecificDoctors('Genito Urinary Surgeon');
 });
 //====================================================================================================

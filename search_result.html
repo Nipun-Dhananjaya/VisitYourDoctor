@@ -38,38 +38,39 @@
         <a href="./my_appointment.html" target="_self">My Appointment</a>
     </nav>
     <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4>Guest</h4>
+    <h4 id="signIn_name">Guest</h4>
 </header>
 <section class="left">
     <div class="left-card">
         <div class="for-img">
-            <img src="/assets/images/online-store.png" alt="online-store">
+            <img src="/assets/images/logo-icon-removebg-preview.png" alt="name" id="profileImg">
         </div>
-        <h5>Online Store</h5>
+        <h5 id="name">Name</h5>
         <div class="for-txt">
-            <p>
-                Explore the wide selection of packages designed to meet your wellness and health needs at our online store.
+            <p id="disc">
+                Your Doctor Here!
             </p>
         </div>
     </div>
 </section>
-<section class="right"></section>
+<div class="right" id="right"></div>
 <footer>
     <img src="/assets/images/logo.png" alt="logo">
     <pre>
-        Tele: +94 71 0 255 255
+        Tele: +94 77 64 21 290
 
-        Email: info@echannelling.com
+        Email: info@visityourdoctor.com
 
-        Address: eChannelling PLC,
-                 No: 108,
+        Address: visit your doctor PLC,
+                 No: 147,
                  W A D Ramanayake Mawatha,
                  Colombo 2,
                  Sri Lanka
     </pre>
 </footer>
 <script src="/lib/jquary.min.js"></script>
-<script type="module" src="/assets/js/index.js" ></script>
-<script type="module" src="/assets/js/search.js" ></script>
+<script type="module" src="/js/search.js" ></script>
+<script type="module" src="/js/sign_in.js" ></script>
+<script type="module" src="/js/index.js" ></script>
 </body>
 </html>

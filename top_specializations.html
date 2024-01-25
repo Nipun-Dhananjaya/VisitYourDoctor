@@ -38,32 +38,20 @@
         <a href="./my_appointment.html" target="_self">My Appointment</a>
     </nav>
     <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4>Guest</h4>
+    <h4 id="signIn_name">Guest</h4>
 </header>
-<section class="cards2">
-    <h3>Doctor Name</h3>
-    <div class="card-set card1">
-        <div class="for-img">
-            <img src="/assets/images/slider_6.jpg" alt="Cardiologist">
-        </div>
-        <h5>Channel a Cardiologist</h5>
-        <div class="for-txt">
-            <p>
-                A Cardiologist specializes in the structure, functions, and diseases of the heart and blood vessels.
-            </p>
-        </div>
-        <a href="./booking.html" target="_blank"><button type="button" class="btn btn-primary book">Book Now</button></a>
-    </div>
+<section class="cards2" id="top-spec">
+    <h3 id="heading">Type</h3>
 </section>
 <footer>
     <img src="/assets/images/logo.png" alt="logo">
     <pre>
-        Tele: +94 71 0 255 255
+        Tele: +94 77 64 21 290
 
-        Email: info@echannelling.com
+        Email: info@visityourdoctor.com
 
-        Address: eChannelling PLC,
-                 No: 108,
+        Address: visit your doctor PLC,
+                 No: 147,
                  W A D Ramanayake Mawatha,
                  Colombo 2,
                  Sri Lanka
@@ -71,6 +59,8 @@
 </footer>
 
 <script src="/lib/jquary.min.js"></script>
-<script type="module" src="/assets/js/top_specialities.js" ></script>
+<script type="module" src="./js/index.js" ></script>
+<script type="module" src="./js/top_specialities.js" ></script>
+<script type="module" src="./js/sign_in.js" ></script>
 </body>
 </html>
