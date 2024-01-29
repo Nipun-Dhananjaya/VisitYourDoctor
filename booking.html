@@ -35,31 +35,14 @@
     <nav>
         <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="index.html#top-spec">Top Specialities</a>
-        <a href="./my_appointment.html" target="_self">My Appointment</a>
+        <a onclick="toMyAppointments()" target="_self">My Appointment</a>
     </nav>
-    <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4 id="signIn_name">Guest</h4>
+    <button id="signIn-btn" type="button"  onclick="loadWindow()" class="btn btn-primary">Sign In</button>
+    <h6 id="signIn_name">Guest</h6>
 </header>
 
 <div class="title-box" >
     <h2>Place Appointment</h2>
-</div>
-<div class="form-box2" >
-    <div class="for-img">
-        <img src="/assets/images/slider_6.jpg" alt="Cardiologist">
-    </div>
-    <h5>GALLE CO-OPERATIVE HOSPITAL LTD</h5>
-    <div class="for-txt">
-        <pre>Galle
-Session Date
-Session Start Time
-05:00 PM
-Appointment No 1
-Your estimated
-appointment
-time is 05:00 PM.
-        </pre>
-    </div>
 </div>
 <div class="form-box" >
     <div class="row g-3">
@@ -78,7 +61,7 @@ time is 05:00 PM.
         </div>
         <div class="col-sm-4">
             <label class="item-label" for="tele">Telephone Number</label>
-            <input id="tele" type="text" class="form-control" placeholder="07X-XXXXXXX" aria-label="Telephone Number">
+            <input id="tele" type="number" class="form-control" placeholder="07X-XXXXXXX" aria-label="Telephone Number">
         </div>
     </div>
 
@@ -94,13 +77,14 @@ time is 05:00 PM.
         <div class="col-sm-4">
             <label class="item-label" for="hospital">Hospital</label>
             <input id="hospital" type="text" class="form-control" placeholder="Select Hospital" aria-label="Hospital">
+            <div id="hosSuggestions"></div>
         </div>
     </div>
 
     <div class="row g-3">
         <div class="col-sm-4">
             <label class="item-label" for="date">Date</label>
-            <input id="date" type="date" class="form-control" placeholder="Date" aria-label="Date">
+            <input id="date" type="date" class="form-control" placeholder="Date" aria-label="Date" min="">
         </div>
         <div class="col-sm">
             <label class="item-label" for="time">Session Time</label>
@@ -111,12 +95,12 @@ time is 05:00 PM.
             </select>
         </div>
         <div class="col-sm-4">
-            <label class="item-label" for="price">Price Range</label>
+            <label class="item-label" for="price">Price</label>
             <input id="price" type="text" class="form-control" placeholder="Any" aria-label="Price" disabled>
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary col-12">Book Now</button>
+    <button type="button" class="btn btn-primary col-12" id="bookNow">Book Now</button>
 </div>
 
 <footer>
@@ -134,7 +118,39 @@ time is 05:00 PM.
     </pre>
 </footer>
 
-<script type="module" src="/assets/js/index.js" ></script>
-<script type="module" src="/assets/js/sign_in.js" ></script>
+<script src="lib/jquary.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    emailjs.init('0t0GWDsWhePSbMHLZ')
+</script>
+<script type="module" src="./js/booking.js" ></script>
+<script type="module" src="./js/index.js"></script>
+<script type="module" src="./js/sign_in.js" ></script>
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    function loadWindow() {
+        var fullPath = window.location.href;
+
+        var fileName = fullPath.split("/").pop();
+
+        console.log("Current HTML file name: " + fileName);
+        if (document.getElementById('signIn-btn').textContent !== 'Loged In') {
+            window.location.href = './sign_in.html?file='+encodeURIComponent(fileName);
+        } else {
+            alert('You are already Loged In!');
+        }
+    }
+    function toMyAppointments() {
+        if (document.getElementById('signIn_name').textContent!=='Guest') {
+            window.location.href = './my_appointment.html?email='+ encodeURIComponent(email);
+        }else{
+            alert('First, Log in to your account!');
+        }
+    }
+</script>
 </body>
 </html>

@@ -41,3 +41,25 @@ async function loadAll() {
     });
 }
 window.onload=loadAll;*/
+
+//set login details==================================================================================
+$(document).ready(function () {
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    updateSignedInDetails(email);
+    console.log("search");
+});
+
+var userLabel=document.getElementById('signIn_name');
+var btnLbl=document.getElementById('signIn-btn');
+
+function updateSignedInDetails(email){
+    if (email!==null) {
+        userLabel.textContent = email;
+        btnLbl.textContent = 'Loged In';
+    }
+}
+//====================================================================================================

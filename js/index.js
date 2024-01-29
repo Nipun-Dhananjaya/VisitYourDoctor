@@ -3,7 +3,7 @@ import {allSpecificDoctors} from "./top_specialities.js";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -28,17 +28,9 @@ const allDoctorData = [];
 const allHospitalData = [];
 const allSpecializationData = [];
 
-export var userLabel=document.getElementById('signIn_name');
-export var btnLbl=document.getElementById('signIn-btn');
-
 //dropdown selections values get from database===================================================
 var dropdown = document.getElementById('dropdown');
-loadDoctors()
-
-export function updateSignedInDetails(userEmail, status){
-    userLabel.textContent = userEmail;
-    btnLbl.textContent=status;
-}
+loadDoctors();
 
 $("#dropdown").on('change', function() {
     if (dropdown.options[dropdown.selectedIndex].text==='Doctors'){
@@ -58,8 +50,6 @@ function loadDoctors(){
             const doctorData = childSnapshot.val();
             allDoctorData.push(doctorData);
         });
-
-        console.log('All Doctor Data:', allDoctorData);
     });
 }
 function loadHospitals(){
@@ -69,8 +59,6 @@ function loadHospitals(){
             const hospitalData = childSnapshot.val();
             allHospitalData.push(hospitalData);
         });
-
-        console.log('All Hospital Data:', allHospitalData);
     });
 }
 function loadSpecs(){
@@ -80,8 +68,6 @@ function loadSpecs(){
             const specData = childSnapshot.val();
             allSpecializationData.push(specData);
         });
-
-        console.log('All Spec Data:', allSpecializationData);
     });
 }
 //===================================================================================================
@@ -106,7 +92,6 @@ $("#floatingTextarea").on('input', function() {
             return specialization.name.toLowerCase().includes(inputText);
         });
     }
-
 
     updateSuggestions(matchingSuggestions);
 });
@@ -138,7 +123,6 @@ function updateSuggestions(suggestions) {
 //direct to search result js file===================================================================
 $("#search-btn").on('click', async () => {
     let foundMatch = false;
-    console.log('search');
     allDoctorData.map((doctor, index) => {
         if (doctor.name===(textField.value)){
             foundMatch = true;
@@ -166,35 +150,60 @@ $("#search-btn").on('click', async () => {
 
 //direct to top specializations js file===============================================================
 $("#card1").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Cardiologist');
 });
 $("#card2").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Physician');
 });
 $("#card3").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Gynecologist');
 });
 $("#card4").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Pediatrician');
 });
 $("#card5").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Eye Surgeon');
 });
 $("#card6").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Cardio Thoracic Surgeon');
 });
 $("#card7").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Endocrinologist and Diabetologist');
 });
 $("#card8").on('click', () => {
-    console.log('card');
     allSpecificDoctors('Genito Urinary Surgeon');
 });
+//====================================================================================================
+//set login details===================================================================================
+$(document).ready(function () {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    updateSignedInDetails(email);
+});
+
+var userLabel=document.getElementById('signIn_name');
+var btnLbl=document.getElementById('signIn-btn');
+
+function updateSignedInDetails(email){
+    if (email!==null) {
+        userLabel.textContent = email;
+        btnLbl.textContent = 'Loged In';
+    }
+}
+//====================================================================================================
+//logout on close=====================================================================================
+function handleUnload() {
+    signOut(auth).then(() => {
+        alert('User Sign out!');
+    }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        alert(errorMessage);
+    });
+}
+
+window.addEventListener('unload', handleUnload);
 //====================================================================================================

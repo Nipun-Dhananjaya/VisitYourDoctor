@@ -76,5 +76,10 @@
 <script src="./assets/fontawasome/js/all.min.js"></script>
 <script type="module" src="./js/sign_in.js" ></script>
 <script type="module" src="./js/index.js" ></script>
+<script>
+    function fromSignInPage(filename,email){
+        window.location.href = './'+filename+'.html?email='+ encodeURIComponent(email);
+    }
+</script>
 </body>
 </html>

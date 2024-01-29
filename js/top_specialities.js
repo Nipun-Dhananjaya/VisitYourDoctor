@@ -30,9 +30,7 @@ export function allSpecificDoctors(spType) {
 
 //create cards===============================================================================
 async function loadTopSpecOutput() {
-    console.log("loadSpec");
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     const type = urlParams.get('type');
@@ -48,11 +46,8 @@ async function loadTopSpecOutput() {
         snapshot.forEach((childSnapshot) => {
             const specData = childSnapshot.val();
             if (specData.name === type) {
-                console.log('if condition');
                 specs = specData;
-                console.log('Doctor Data:', specs);
                 jsonString = JSON.stringify(specs);
-                console.log("JSON String:", jsonString);
 
                 parsedSpecObject = JSON.parse(jsonString);
 
@@ -62,15 +57,12 @@ async function loadTopSpecOutput() {
                 onValue(doctorsRef, (snapshot) => {
                     snapshot.forEach((childSnapshot) => {
                         const doctorData = childSnapshot.val();
-                        console.log(doctorData.specialization);
-                        console.log(parsedSpecObject.sid);
+                        //console.log(doctorData.specialization);
+                        //console.log(parsedSpecObject.sid);
                         if (doctorData.specialization === parsedSpecObject.sid) {
-                            console.log('else if condition');
                             doctorArr.push(doctorData);
                         }
-                        console.log('Doctor Data:', doctorArr);
                         jsonDocString = JSON.stringify(doctorArr);
-                        console.log("JSON String:", jsonDocString);
 
                         parsedDocObject = JSON.parse(jsonDocString);
                     });
@@ -99,17 +91,24 @@ async function loadTopSpecOutput() {
                         imgEl.style.display = 'inline-block';
                         imgEl.src = doc.photoUrl;
 
-                        var name = document.createElement('h3');
+                        var name = document.createElement('h4');
                         name.textContent = doc.name;
+                        name.id='nameTag';
+                        var nameTag=document.createElement('nameTag').value;
 
                         var spec = document.createElement('p');
                         spec.textContent = parsedSpecObject.name;
+                        spec.id='specTag';
+                        var specTag=document.createElement('specTag').value;
 
                         var button = document.createElement('button');
                         button.className = 'btn btn-primary';
-                        button.style.margin = '8px';
-                        button.style.position = 'relative';
+                        button.id='bookingBtn';
                         button.textContent = 'Book Now';
+
+                        button.addEventListener('click', function () {
+                            loadBookingOnTopSpec(doc.name,parsedSpecObject.name);
+                        });
 
                         card.appendChild(imgEl);
                         card.appendChild(name);
@@ -131,7 +130,21 @@ async function loadTopSpecOutput() {
 
 // window.onload=loadTopSpecOutput;
 $(document).ready(async function () {
-    console.log("top");
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    updateSignedInDetails(email);
     await loadTopSpecOutput();
 });
 //===========================================================================================
+
+var userLabel=document.getElementById('signIn_name');
+var btnLbl=document.getElementById('signIn-btn');
+
+function updateSignedInDetails(email){
+    if (email!==null) {
+        userLabel.textContent = email;
+        btnLbl.textContent = 'Loged In';
+    }
+}

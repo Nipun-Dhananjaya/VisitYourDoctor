@@ -35,10 +35,10 @@
     <nav>
         <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="index.html#top-spec">Top Specialities</a>
-        <a href="./my_appointment.html" target="_self">My Appointment</a>
+        <a onclick="toMyAppointments()" target="_self">My Appointment</a>
     </nav>
-    <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4 id="signIn_name">Guest</h4>
+    <button id="signIn-btn" type="button"  onclick="loadWindow()" class="btn btn-primary">Sign In</button>
+    <h6 id="signIn_name">Guest</h6>
 </header>
 <section class="cards2" id="top-spec">
     <h3 id="heading">Type</h3>
@@ -62,5 +62,33 @@
 <script type="module" src="./js/index.js" ></script>
 <script type="module" src="./js/top_specialities.js" ></script>
 <script type="module" src="./js/sign_in.js" ></script>
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    function loadBookingOnTopSpec(nameTag,specTag){
+        window.location.href = './booking.html?name='+ encodeURIComponent(nameTag)+'&spec='+ encodeURIComponent(specTag)+'&email='+ encodeURIComponent(email);
+    }
+    function loadWindow() {
+        var fullPath = window.location.href;
+
+        var fileName = fullPath.split("/").pop();
+
+        console.log("Current HTML file name: " + fileName);
+        if (document.getElementById('signIn-btn').textContent !== 'Loged In') {
+            window.location.href = './sign_in.html?file='+encodeURIComponent(fileName);
+        } else {
+            alert('You are already Loged In!');
+        }
+    }
+    function toMyAppointments() {
+        if (document.getElementById('signIn_name').textContent!=='Guest') {
+            window.location.href = './my_appointment.html?email='+ encodeURIComponent(email);
+        }else{
+            alert('First, Log in to your account!');
+        }
+    }
+</script>
 </body>
 </html>

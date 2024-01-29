@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, ref, onValue, set, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 import { getAuth, signInWithEmailAndPassword,createUserWithEmailAndPassword, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import {updateSignedInDetails} from "./index.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,23 +20,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+
+const file = urlParams.get('file');
+var fileName = file.split(".html");
 
 $("#signUp").on('click', (e) => {
-    const email=document.getElementById('typeEmailX-2').value;
-    const password=document.getElementById('typePasswordX-2').value;
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-            set(ref(database, 'users/' + user.uid), {
-                email: email
+        const email = document.getElementById('typeEmailX-2').value;
+        const password = document.getElementById('typePasswordX-2').value;
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                set(ref(database, 'users/' + user.uid), {
+                    email: email,
+                });
+                alert("User Sign up Successful!");
+                fromSignInPage(fileName[0],email);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode+errorMessage)
+                alert(errorMessage);
             });
-            window.location.href = '../index.html';
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            alert(errorMessage);
-        });
 });
 $("#login").on('click', () => {
     const email=document.getElementById('typeEmailX-2').value;
@@ -45,34 +51,32 @@ $("#login").on('click', () => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            const dt=new Date();
-            update(ref(database,'users/'+ user.uid)),{
-                last_login:dt
-            }
             alert('User Log in Successfully!');
-            window.location.href = '../index.html';
+            fromSignInPage(fileName[0],email);
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log(errorMessage);
             alert(errorMessage);
         });
 });
 
 
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
-        const specRef = ref(database,'user/'+uid);
-        onValue(specRef,(snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-                const specData = childSnapshot.val();
-                const userEmail = specData.email;
-
-                updateSignedInDetails(userEmail,'Loged In');
+function handleState(){
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // User is signed in, see docs for a list of available properties
+            // https://firebase.google.com/docs/reference/js/auth.user
+            const uid = user.uid;
+            const specRef = ref(database,'user/'+uid);
+            onValue(specRef,(snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    const specData = childSnapshot.val();
+                });
             });
-        });
-    }
-});
+        }else {
+            console.log("Loged out");
+        }
+    });
+}

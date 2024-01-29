@@ -22,9 +22,7 @@ const database = getDatabase(app);
 const auth = getAuth(app);
 
 async function loadSearchOutput() {
-    console.log("loadResult");
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     const type = urlParams.get('type');
@@ -45,12 +43,9 @@ async function loadSearchOutput() {
         onValue(doctorsRef,(snapshot) => {
             snapshot.forEach((childSnapshot) => {
                 const doctorData = childSnapshot.val();
-                if (doctorData.name===name){
-                    console.log('if condition');
+                if (doctorData.name===name && document.getElementById('name')!==null){
                     doctor=doctorData;
-                    console.log('Doctor Data:', doctor);
                     jsonString = JSON.stringify(doctor);
-                    console.log("JSON String:", jsonString);
 
                     parsedDocObject = JSON.parse(jsonString);
 
@@ -60,9 +55,7 @@ async function loadSearchOutput() {
 
                     imgElement.src = parsedDocObject.photoUrl;
 
-                    console.log(parsedDocObject.name+":"+parsedDocObject.gender+":"+parsedDocObject.tele);
                     let hospitals=doctor.hospitals;
-                    console.log(hospitals);
 
                     let hospArray = Object.values(hospitals);
 
@@ -71,19 +64,14 @@ async function loadSearchOutput() {
                     for (let i = 0; i < hospArray.length; i++) {
                         var hospitalData;
                         const array=[];
-                        console.log(hospArray[i]);
                         let id=hospArray[i].hosId;
-                        console.log('id: '+id);
 
                         const hospitalRef = ref(database,'Hospital/'+id);
                         onValue(hospitalRef,(snapshot) => {
                             snapshot.forEach((childSnapshot) => {
-                                console.log('inside');
                                 hospitalData = childSnapshot.val();
                                 array.push(hospitalData);
                             });
-                            console.log('Hospital Data:', hospitalData);
-                            console.log(array);
                             var card = document.createElement('div');
                             card.className = 'card';
                             card.style.border = '1px solid #ccc';
@@ -105,7 +93,7 @@ async function loadSearchOutput() {
                             imgEl.style.display = 'inline-block';
                             imgEl.src = array[2];
 
-                            var title = document.createElement('h3');
+                            var title = document.createElement('h4');
                             title.textContent = array[3];
 
                             var address = document.createElement('p');
@@ -117,12 +105,16 @@ async function loadSearchOutput() {
                             button.style.position = 'relative';
                             button.textContent = 'Book Now';
 
+
+                            button.addEventListener('click', function () {
+                                loadBookingOnSearch(name,array[3],type);
+                            });
+
                             card.appendChild(imgEl);
                             card.appendChild(title);
                             card.appendChild(address);
                             card.appendChild(button);
 
-                            console.log(cardsContainer);
                             if (cardsContainer) {
                                 cardsContainer.appendChild(card);
                             } else {
@@ -142,12 +134,9 @@ async function loadSearchOutput() {
         onValue(specRef, (snapshot) => {
             snapshot.forEach((childSnapshot) => {
                 const specData = childSnapshot.val();
-                if (specData.name === name) {
-                    console.log('if condition');
+                if (specData.name === name && document.getElementById('name')!==null) {
                     specs = specData;
-                    console.log('Doctor Data:', specs);
                     jsonString = JSON.stringify(specs);
-                    console.log("JSON String:", jsonString);
 
                     parsedSpecObject = JSON.parse(jsonString);
 
@@ -158,15 +147,10 @@ async function loadSearchOutput() {
                     onValue(doctorsRef, (snapshot) => {
                         snapshot.forEach((childSnapshot) => {
                             const doctorData = childSnapshot.val();
-                            console.log(doctorData.specialization);
-                            console.log(parsedSpecObject.sid);
                             if (doctorData.specialization === parsedSpecObject.sid) {
-                                console.log('else if condition');
                                 doctorArr.push(doctorData);
                             }
-                            console.log('Doctor Data:', doctorArr);
                             jsonDocString = JSON.stringify(doctorArr);
-                            console.log("JSON String:", jsonDocString);
 
                             parsedDocObject = JSON.parse(jsonDocString);
                         });
@@ -195,7 +179,7 @@ async function loadSearchOutput() {
                             imgEl.style.display = 'inline-block';
                             imgEl.src = doc.photoUrl;
 
-                            var name = document.createElement('h3');
+                            var name = document.createElement('h4');
                             name.textContent = doc.name;
 
                             var spec = document.createElement('p');
@@ -207,12 +191,16 @@ async function loadSearchOutput() {
                             button.style.position = 'relative';
                             button.textContent = 'Book Now';
 
+
+                            button.addEventListener('click', function () {
+                                loadBookingOnSearch(doc.name,parsedSpecObject.name,type);
+                            });
+
                             card.appendChild(imgEl);
                             card.appendChild(name);
                             card.appendChild(spec);
                             card.appendChild(button);
 
-                            console.log(cardsContainer);
                             if (cardsContainer) {
                                 cardsContainer.appendChild(card);
                             } else {
@@ -231,12 +219,9 @@ async function loadSearchOutput() {
         onValue(hospRef, (snapshot) => {
             snapshot.forEach((childSnapshot) => {
                 const hospData = childSnapshot.val();
-                if (hospData.name === name) {
-                    console.log('else condition');
+                if (hospData.name === name && document.getElementById('name')!==null) {
                     hosps = hospData;
-                    console.log('Doctor Data:', hosps);
                     jsonHosString = JSON.stringify(hosps);
-                    console.log("JSON String:", jsonHosString);
 
                     parsedHospObject = JSON.parse(jsonHosString);
 
@@ -247,7 +232,6 @@ async function loadSearchOutput() {
                     imgElement.src = parsedHospObject.logo;
                     const id=parsedHospObject.hid;
                     const idArr=id.split('-');
-                    console.log(idArr);
                     const lastNum=parseInt(idArr[1]);
                     console.log(lastNum);
                     const docArr=[];
@@ -256,25 +240,20 @@ async function loadSearchOutput() {
                     onValue(doctorsRef, (snapshot) => {
                         snapshot.forEach((childSnapshot) => {
                             const doctorData = childSnapshot.val();
-                            console.log(doctorData);
                             docArr.push(doctorData);
                         });
-                        console.log(docArr);
                         const array=[];
 
                         for (let i = 0; i < docArr.length; i++) {
                             console.log(docArr[i]);
                             let hospital=docArr[i].hospitals;
-                            console.log(hospital);
                             let hospArray = Object.values(hospital);
                             for (let j = 0; j < hospArray.length; j++) {
                                 if (hospArray[j].hosId===('h'+lastNum)){
                                     array.push(docArr[i]);
                                 }
                             }
-                            console.log(array);
                         }
-                        console.log(array);
                         const cardsContainer = document.getElementById('right');
                         for (let i = 0; i < array.length; i++) {
                             var card = document.createElement('div');
@@ -301,10 +280,10 @@ async function loadSearchOutput() {
                             var title = document.createElement('h4');
                             title.textContent = array[i].name;
 
+                            var address = document.createElement('p');
                             const allSpecializationData=[];
                             var selectedSpecialization;
                             let specArray;
-                            var address = document.createElement('p');
                             const specRef = ref(database,'Specialization/');
                             onValue(specRef,(snapshot) => {
                                 snapshot.forEach((childSnapshot) => {
@@ -312,28 +291,28 @@ async function loadSearchOutput() {
                                     allSpecializationData.push(specData);
                                 });
                                 specArray = Object.values(allSpecializationData);
-                                console.log('All Spec Data:', specArray);
 
-                                console.log(specArray.length);
                                 for (let j = 0; j < specArray.length; j++) {
                                     if (allSpecializationData[j].sid===array[i].specialization){
                                         selectedSpecialization=specArray[j].name;
-                                        console.log(specArray[j].name);
                                     }
-                                    console.log(selectedSpecialization);
                                     address.textContent = selectedSpecialization;
                                 }
                             });
                             var button = document.createElement('button');
                             button.className = 'btn btn-primary';
+                            button.id='bookingBtn';
                             button.textContent = 'Book Now';
+
+                            button.addEventListener('click', function () {
+                                loadBookingOnSearch(array[i].name,name,type);
+                            });
 
                             card.appendChild(imgEl);
                             card.appendChild(title);
                             card.appendChild(address);
                             card.appendChild(button);
 
-                            console.log(cardsContainer);
                             if (cardsContainer) {
                                 cardsContainer.appendChild(card);
                             } else {
@@ -347,11 +326,26 @@ async function loadSearchOutput() {
     }
     //==================================================================================================================
 }
-// window.onload= await loadSearchOutput;
+// set login details====================================================================================================
 $(document).ready(async function () {
-    console.log("search");
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    updateSignedInDetails(email);
     await loadSearchOutput();
 });
+
+var userLabel=document.getElementById('signIn_name');
+var btnLbl=document.getElementById('signIn-btn');
+
+function updateSignedInDetails(email){
+    if (email!==null) {
+        userLabel.textContent = email;
+        btnLbl.textContent = 'Loged In';
+    }
+}
+//======================================================================================================================
 
 export async function allSearchResults(searchType, searchName) {
     if (typeof searchType !== 'undefined' || typeof searchType !== 'undefined') {

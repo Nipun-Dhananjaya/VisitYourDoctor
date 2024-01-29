@@ -35,10 +35,10 @@
     <nav>
         <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="index.html#top-spec">Top Specialities</a>
-        <a href="./my_appointment.html" target="_self">My Appointment</a>
+        <a onclick="toMyAppointments()" target="_self">My Appointment</a>
     </nav>
-    <button type="button" onclick="window.location.href = './sign_in.html';" class="btn btn-primary">Sign In</button>
-    <h4 id="signIn_name">Guest</h4>
+    <button id="signIn-btn" type="button"  onclick="loadWindow()" class="btn btn-primary">Sign In</button>
+    <h6 id="signIn_name">Guest</h6>
 </header>
 
 <table class="table table-striped appointments">
@@ -71,7 +71,29 @@
     </pre>
 
 </footer>
+<script src="lib/jquary.min.js"></script>
 <script type="module" src="./js/sign_in.js" ></script>
 <script type="module" src="./js/my_appoinments.js" ></script>
+<script>
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
+    const email = urlParams.get('email');
+    function loadWindow() {
+        var fullPath = window.location.href;
+
+        var fileName = fullPath.split("/").pop();
+
+        if (document.getElementById('signIn-btn').textContent !== 'Loged In') {
+            window.location.href = './sign_in.html?file='+encodeURIComponent(fileName);
+        } else {
+            alert('You are already Loged In!');
+        }
+    }
+    function toMyAppointments() {
+        window.location.href = './my_appointment.html?email='+ encodeURIComponent(email);
+    }
+</script>
 </body>
 </html>

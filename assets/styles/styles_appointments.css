@@ -47,7 +47,7 @@ header>button{
     text-decoration: none;
     position: relative;
     top: 2px;
-    left: 45vw;
+    left: 42vw;
 }
 header>nav>a:first-child:hover{
     color: limegreen;
@@ -61,11 +61,11 @@ header>nav>a:nth-child(3):hover{
     color: limegreen;
     font-size: 30px;
 }
-header>h4{
+header>h6{
     display: inline-block;
     margin-right: 30px;
     position: relative;
-    left: 45vw;
+    left: 40vw;
     top: 7px;
 }
 .appointments{
