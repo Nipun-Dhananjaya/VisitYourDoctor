@@ -61,22 +61,3 @@ $("#login").on('click', () => {
             alert(errorMessage);
         });
 });
-
-
-function handleState(){
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/auth.user
-            const uid = user.uid;
-            const specRef = ref(database,'user/'+uid);
-            onValue(specRef,(snapshot) => {
-                snapshot.forEach((childSnapshot) => {
-                    const specData = childSnapshot.val();
-                });
-            });
-        }else {
-            console.log("Loged out");
-        }
-    });
-}

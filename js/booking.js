@@ -194,6 +194,10 @@ function sendMail(email) {
 
     emailjs.send(serviceID,templateID,params).then((res) =>{
         alert("Appointment placed successfully! Please, Check Your Inbox!");
+        document.getElementById('pname').value='';
+        document.getElementById('tele').value='';
+        document.getElementById('date').value='';
+        document.getElementById('price').value='';
     }).catch();
 }
 //======================================================================================================================
