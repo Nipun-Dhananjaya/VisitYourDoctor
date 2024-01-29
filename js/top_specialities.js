@@ -107,7 +107,7 @@ async function loadTopSpecOutput() {
                         button.textContent = 'Book Now';
 
                         button.addEventListener('click', function () {
-                            loadBookingOnTopSpec(doc.name,parsedSpecObject.name);
+                            loadBookingOnTopSpec(doc.name,parsedSpecObject.name,'Specialization');
                         });
 
                         card.appendChild(imgEl);

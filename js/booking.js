@@ -222,16 +222,18 @@ $("#bookNow").on('click', function () {
     const email = urlParams.get('email');
     const uniqueId = new Date().getTime().toString();
     console.log(uniqueId);
+    var salDrop=document.getElementById('inlineFormSelectPref');
+    var timeDrop=document.getElementById('time');
 
     set(ref(database, '/appointments/'+uniqueId), {
-        salutation: document.getElementById('inlineFormSelectPref').options[dropdown.selectedIndex].value,
+        salutation: salDrop.options[salDrop.selectedIndex].text,
         pname: document.getElementById('pname').value,
         tele: document.getElementById('tele').value,
         spec: document.getElementById('specialisation').value,
         dname: document.getElementById('dname').value,
         hospital: document.getElementById('hospital').value,
         date: document.getElementById('date').value,
-        session: document.getElementById('time').options[dropdown.selectedIndex].value,
+        session: timeDrop.options[timeDrop.selectedIndex].text,
         price: document.getElementById('price').value,
         user: email
     });

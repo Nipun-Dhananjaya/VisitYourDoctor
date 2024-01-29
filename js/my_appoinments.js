@@ -22,35 +22,48 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
-/*
 const allAppointments=[];
-//load all details
-async function loadAll() {
-    const doctorsRef = ref(database,'Doctors/');
-    onValue(doctorsRef,(snapshot) => {
+let appointments;
+//load all details======================================================================================================
+function loadAll(email) {
+    const appRef = ref(database,'/appointments');
+    onValue(appRef,(snapshot) => {
         snapshot.forEach((childSnapshot) => {
-            const doctorData = childSnapshot.val();
-            allAppointments.push(doctorData);
+            const appData = childSnapshot.val();
+            allAppointments.push(appData);
         });
 
         console.log('All Appointment Data:', allAppointments);
-    })
-    $("#table-body").empty();
-    allAppointments.map((appointment, index) => {
-        $("#table-body").append(`<tr><td>${appointment.date}</td><td>${appointment.pName}</td><td>${appointment.dName}</td><td>${appointment.specialization}</td><td>${appointment.session}</td><td>${appointment.tele}</td></tr>`);
+        console.log(allAppointments[0].user);
+        console.log(email);
+        console.log(allAppointments);
+        for (let i = 0; i < allAppointments.length; i++) {
+            console.log(allAppointments[i].user);
+            console.log(email);
+            if (email===allAppointments[i].user) {
+                $("#table-body").append(`<tr><td>${allAppointments[i].date}</td><td>${allAppointments[i].pname}</td><td>${allAppointments[i].dname}</td>
+            <td>${allAppointments[i].spec}</td><td>${allAppointments[i].session}</td><td>${allAppointments[i].tele}</td></tr>`);
+            }
+        }
     });
+    /*allAppointments.map((appointment, index) => {
+        console.log(appointment.user);
+        console.log(email);
+        if (email===appointment.user) {
+            $("#table-body").append(`<tr><td>${appointment.date}</td><td>${appointment.pname}</td><td>${appointment.dname}</td>
+            <td>${appointment.spec}</td><td>${appointment.session}</td><td>${appointment.tele}</td></tr>`);
+        }
+    });*/
 }
-window.onload=loadAll;*/
-
-//set login details==================================================================================
+//======================================================================================================================
+//set login details=====================================================================================================
 $(document).ready(function () {
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     const email = urlParams.get('email');
     updateSignedInDetails(email);
-    console.log("search");
+    loadAll(email);
 });
 
 var userLabel=document.getElementById('signIn_name');
@@ -62,4 +75,4 @@ function updateSignedInDetails(email){
         btnLbl.textContent = 'Loged In';
     }
 }
-//====================================================================================================
+//======================================================================================================================

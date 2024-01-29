@@ -67,8 +67,8 @@
     const urlParams = new URLSearchParams(queryString);
 
     const email = urlParams.get('email');
-    function loadBookingOnTopSpec(nameTag,specTag){
-        window.location.href = './booking.html?name='+ encodeURIComponent(nameTag)+'&spec='+ encodeURIComponent(specTag)+'&email='+ encodeURIComponent(email);
+    function loadBookingOnTopSpec(nameTag,specTag,type){
+        window.location.href = './booking.html?name='+ encodeURIComponent(nameTag)+'&spec='+ encodeURIComponent(specTag)+'&type='+ encodeURIComponent(type)+'&email='+ encodeURIComponent(email);
     }
     function loadWindow() {
         var fullPath = window.location.href;

@@ -97,7 +97,6 @@
 
     <button type="button" class="btn btn-outline-success search" id="search-btn">Search</button>
 </div>
-<!--<button type="button" class="btn btn-outline-secondary" onclick="window.location.href = loadAdvancedSearch();">Advanced Search</button>-->
 <div class="horiz fourthhoriz"></div>
 <div id="top-spec" class="top-spec"><h2>Top Specialities</h2></div>
 <div class="horiz fifthhoriz"></div>
@@ -238,7 +237,11 @@
     }
 
     function toTopSpecilsPage(spType){
-        window.location.href = './top_specializations.html?type='+ encodeURIComponent(spType)+'&email='+ encodeURIComponent(email);
+        if (document.getElementById('signIn_name').textContent!=='Guest') {
+            window.location.href = './top_specializations.html?type='+ encodeURIComponent(spType)+'&email='+ encodeURIComponent(email);
+        }else{
+            alert('First, Log in to your account!');
+        }
     }
 
     function loadWindow() {
@@ -251,10 +254,6 @@
         } else {
             alert('You are already Loged In!');
         }
-    }
-
-    function loadAdvancedSearch() {
-        window.location.href = './sign_in.html?email='+ encodeURIComponent(email);
     }
     function toMyAppointments() {
         if (document.getElementById('signIn_name').textContent!=='Guest') {

@@ -33,7 +33,6 @@
 <header>
     <a href="index.html"><img src="/assets/images/logo.png" title="logo" alt="logo" width="100"></a>
     <nav>
-        <!--<a href="index.html#quick">Quick Access</a>-->
         <a href="index.html#top-spec">Top Specialities</a>
         <a onclick="toMyAppointments()" target="_self">My Appointment</a>
     </nav>
@@ -76,7 +75,6 @@
 <script type="module" src="./js/my_appoinments.js" ></script>
 <script>
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     const email = urlParams.get('email');
