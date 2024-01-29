@@ -203,6 +203,8 @@ function sendMail(email) {
 //======================================================================================================================
 //Book Appointment======================================================================================================
 $("#bookNow").on('click', function () {
+    var salDrop=document.getElementById('inlineFormSelectPref');
+    var timeDrop=document.getElementById('time');
     if (!namePattern.test($("#pname").val())) {
         alert("Patient Name must start with a letter and can only include letters, hyphens, and apostrophes.");
         return;
@@ -219,6 +221,14 @@ $("#bookNow").on('click', function () {
         alert("Specialisation must start with a letter and can only include letters");
         return;
     }
+    if (document.getElementById('date').value===null || document.getElementById('date').value===undefined) {
+        alert("Date Not Set!");
+        return;
+    }
+    if (timeDrop.options[timeDrop.selectedIndex].text==='Any') {
+        alert("Time Not Set!");
+        return;
+    }
     const queryString = window.location.search;
     console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
@@ -226,8 +236,6 @@ $("#bookNow").on('click', function () {
     const email = urlParams.get('email');
     const uniqueId = new Date().getTime().toString();
     console.log(uniqueId);
-    var salDrop=document.getElementById('inlineFormSelectPref');
-    var timeDrop=document.getElementById('time');
 
     set(ref(database, '/appointments/'+uniqueId), {
         salutation: salDrop.options[salDrop.selectedIndex].text,
